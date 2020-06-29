@@ -5,10 +5,9 @@ import { FrontOfficeRoutingModule } from './front-office-routing.module';
 import { ClientNavbarComponent } from './client-navbar/client-navbar.component';
 import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
 import { PageFooterComponent } from './page-footer/page-footer.component';
-import { ClientQuoteComponent } from './client-quote/client-quote.component';
-import { ClientIntroComponent } from './client-intro/client-intro.component';
-import { ClientCommentComponent } from './client-comment/client-comment.component';
+
 import { MaterialModule } from '../shared/material/material.module';
+import { ClientHomeComponent } from './client-home/client-home.component';
 
 
 @NgModule({
@@ -16,14 +15,12 @@ import { MaterialModule } from '../shared/material/material.module';
     ClientNavbarComponent,
     AdminNavbarComponent,
     PageFooterComponent,
-    ClientQuoteComponent,
-    ClientIntroComponent,
-    ClientCommentComponent],
+    ClientHomeComponent],
   imports: [
     CommonModule,
     FrontOfficeRoutingModule,
     MaterialModule
   ],
-  exports:[AdminNavbarComponent]
+  exports: [ClientHomeComponent]
 })
 export class FrontOfficeModule { }

@@ -12,9 +12,11 @@ import { FrontOfficeModule } from './front-office/front-office.module';
 
 
 
+
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
+    
     
     
   ],
