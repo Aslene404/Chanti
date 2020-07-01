@@ -8,6 +8,14 @@ import { PageFooterComponent } from './page-footer/page-footer.component';
 
 import { MaterialModule } from '../shared/material/material.module';
 import { ClientHomeComponent } from './client-home/client-home.component';
+import { ClientContactComponent } from './client-contact/client-contact.component';
+import { FrontLandpageComponent } from './front-landpage/front-landpage.component';
+import { ClientAboutComponent } from './client-about/client-about.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FrontSinginComponent } from './front-singin/front-singin.component';
 
 
 @NgModule({
@@ -15,12 +23,22 @@ import { ClientHomeComponent } from './client-home/client-home.component';
     ClientNavbarComponent,
     AdminNavbarComponent,
     PageFooterComponent,
-    ClientHomeComponent],
+    ClientHomeComponent,
+    ClientContactComponent,
+    FrontLandpageComponent,
+    ClientAboutComponent,
+    FrontSinginComponent],
   imports: [
     CommonModule,
     FrontOfficeRoutingModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    
   ],
+  
   exports: [ClientNavbarComponent,ClientHomeComponent,AdminNavbarComponent]
   
 })

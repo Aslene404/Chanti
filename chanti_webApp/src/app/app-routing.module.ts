@@ -9,7 +9,7 @@ const routes: Routes = [
     loadChildren: () => import('./front-office/front-office.module').then(m => m.FrontOfficeModule),
   },
   
-  { path: '**', redirectTo: 'front', pathMatch: 'full' }
+  { path: '**', redirectTo: 'front/home', pathMatch: 'full' }
 ];
 
 @NgModule({

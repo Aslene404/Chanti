@@ -1,7 +1,8 @@
-<nav class="w-full z-30 top-0 py-1 bg-gray-100">
+<nav class="w-full z-30 top-0 py-1 bg-gray-200">
     <div class="w-full container mx-auto flex flex-wrap items-center justify-between 
                 mt-0 px-6 py-3">
-                <a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" mat-button>
+                <a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" [routerLink]='["/front/home"]' routerLinkActive="active-link"
+                [routerLinkActive]='["active","inactive"]'  mat-button>
                     <img src="assets\img\Chanti.png" width="100" ></a>
         <label for="menu-toggle" class="cursor-pointer md:hidden block">
             <svg class="fill-current text-gray-900" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -15,7 +16,8 @@
             <nav>
                 <ul class="md:flex items-center justify-between text-base pt-4 md:pt-0">
                     <li>
-                        <a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" mat-button>
+                        <a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" [routerLink]='["/front/home"]' routerLinkActive="active-link"
+                        [routerLinkActive]='["active","inactive"]'  mat-button>
                             <mat-icon>home</mat-icon>
                             Home
                         </a>
@@ -23,17 +25,20 @@
                     
                 
                     <li>
-                        <a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" mat-button>
+                        <a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" [routerLink]='["/front/contact"]' routerLinkActive="active-link"
+                        [routerLinkActive]='["active","inactive"]'  mat-button>
                             Contact
                         </a>
                     </li>
                     <li>
-                        <a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" mat-button>
+                        <a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" [routerLink]='["/front/about"]' routerLinkActive="active-link"
+                        [routerLinkActive]='["active","inactive"]'  mat-button>
                             About US
                         </a>
                     </li>
                     <li>
-                        <a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" mat-button>
+                        <a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" [routerLink]='["/front/signin"]' routerLinkActive="active-link"
+                        [routerLinkActive]='["active","inactive"]'  mat-button>
                             <mat-icon>person</mat-icon>
                             SignIn
                             
