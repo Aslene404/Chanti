@@ -21,6 +21,7 @@ import { ClientHomeComponent } from './client-home/client-home.component';
     FrontOfficeRoutingModule,
     MaterialModule
   ],
-  exports: [ClientHomeComponent]
+  exports: [ClientNavbarComponent,ClientHomeComponent,AdminNavbarComponent]
+  
 })
 export class FrontOfficeModule { }

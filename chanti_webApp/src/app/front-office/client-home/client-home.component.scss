@@ -1,0 +1,31 @@
+.site-header{
+    height: 100vh;
+    width:100%;
+    background-image: 
+    linear-gradient(to right bottom,
+    rgba(255, 255, 255, 0.51) 0%,
+    rgba(66,64,74,0.51) 37%, 
+    rgba(246, 246, 246, 0.51) 62%, 
+    rgba(66,64,74,0.51) 94%, 
+    rgba(66,64,74,)
+    ),
+    url(../../../assets/img/home_bg.jpg);
+    background-size: cover;
+    background-position: top;
+    clip-path: polygon(0 0,100% 0,100% 75%,0 100%);
+  }
+  .title{
+    font-size: 5rem;
+    font-family: cursive;
+    color:whitesmoke;
+    position: relative;
+    top:50%;
+    left:30%;
+  }
+   .box{
+     // width: 90px;
+      display: grid;
+   //   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      grid-gap: 15px;
+      margin: 0 auto;
+    }
