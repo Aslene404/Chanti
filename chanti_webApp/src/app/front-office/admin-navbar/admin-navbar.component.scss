@@ -1,39 +1,38 @@
 #header {
-    background-image: 
-    linear-gradient(to left top, 
-  rgba(47, 47, 47, 0.493) 0%, 
-  rgb(255, 251, 0)
-    );
-  }
-  .navbar_menu{
-    justify-content: flex-end;
-  }
-  a {
-    padding-right: 1rem; 
-    }
-  .active {
-    color: white;
-  }
-  .inactive {
-    color: rgb(255, 255, 255);
-  }
-  #menu-toggle:checked + #menu {
-    display: block;
-  }
-  .hover\:grow {
-    transition: all 0.3s;
-    transform: scale(1);
-  }
-  .hover\:grow:hover {
-    transform: scale(1.02);
-  }
-  .unselectable {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  background-image: 
+  linear-gradient(to left top, 
+rgba(47, 47, 47, 0.493) 0%, 
+rgb(255, 251, 0)
+  );
 }
-
-  
+.navbar_menu{
+  justify-content: flex-end;
+}
+a {
+  padding-right: 1rem; 
+  }
+.active {
+  color: white;
+  background-color: tomato;
+}
+.inactive {
+  color: rgb(255, 255, 255);
+}
+#menu-toggle:checked + #menu {
+  display: block;
+}
+.hover\:grow {
+  transition: all 0.3s;
+  transform: scale(1);
+}
+.hover\:grow:hover {
+  transform: scale(1.02);
+}
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
