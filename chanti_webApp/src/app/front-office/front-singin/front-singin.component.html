@@ -1,13 +1,15 @@
 <div class="container w-full
             flex flex-row 
-            sm:flex-col md:flex-col lg:flex-row xl:flex-row inline-block align-center py-12">
+            sm:flex-col md:flex-col lg:flex-row xl:flex-row  align-center py-12">
 
-<div class="container flex flex-auto justify-center inline-block py-12">
+<div class="container flex flex-auto justify-center py-12 ">
+  <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center " style="background-image: url('/assets/img/signin.jpg')" title="signin">
+  </div>
      <mat-card class="login">
      <h1 class="text-blue-700 font-bold text-center">Sign In</h1><br>
       <form >
         <div > 
-         <mat-form-field appearance="fill" class="w-full">
+         <mat-form-field appearance="fill" class="w-64">
                 <mat-label>Email</mat-label>
                 <input
                  
@@ -23,7 +25,7 @@
         <div>
             <mat-form-field appearance="fill">
                 <mat-label>Password</mat-label>
-                <input 
+                <input type="password" 
                   matInput 
                   placeholder="Enter your password" 
                   
@@ -49,6 +51,7 @@
         <a 
         mat-raised-button 
         color="primary"
+        [routerLink]="['/front/register']"
         >
         Signup
       </a>
@@ -57,10 +60,9 @@
     </mat-card>
 </div>
 
-<div class="container flex flex-auto inline-block py-12">
+<div class="container flex flex-auto  py-12">
     <div class="w-full lg:flex">
-        <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center " style="background-image: url('/assets/img/signin.jpg')" title="signin">
-        </div>
+        
         <div class="bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
           <div class="mb-8">
             

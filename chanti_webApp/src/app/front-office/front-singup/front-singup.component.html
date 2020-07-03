@@ -1,0 +1,100 @@
+<div class="text-center">
+    <h1 class="font-bold text-blue-700 ">Register Form</h1>
+    <br>
+<span class="text-center">Welcome with us</span></div>
+    <div class="flex justify-center">
+
+        <mat-card class="login">
+            <form >
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Full Name</mat-label>
+                        <input 
+                            matInput 
+                            placeholder="Enter your Full Name" 
+                            required
+                            formControlName="fullusername">
+                        <mat-icon matSuffix>person</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Phone</mat-label>
+                        <input 
+                            matInput 
+                            placeholder="Enter your phone"
+                            required
+                            formControlName="phone">
+                        <mat-icon matSuffix>phone</mat-icon>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Age</mat-label>
+                        <input 
+                            matInput 
+                            placeholder="Enter your Age"
+                            formControlName="age"
+                            required>
+                        <mat-icon matSuffix>timeline</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Role</mat-label>
+                        <input 
+                            
+                            matInput 
+                            placeholder="Enter your role "
+                            required
+                            formControlName="role">
+                        <mat-icon matSuffix>work</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input 
+                            type="email"
+                            matInput 
+                            placeholder="Enter your email"
+                            required
+                            formControlName="email">
+                        <mat-icon matSuffix>email</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Password</mat-label>
+                        <input 
+                        type="password"
+                            matInput 
+                            placeholder="Enter your password" 
+    
+                            required
+                            formControlName="password">
+                            <mat-icon matSuffix>lock</mat-icon>
+                    </mat-form-field>
+                </div>
+            </form>
+            <div class="flex items-center justify-between">
+            <button 
+                mat-raised-button 
+                color="primary" 
+                >Sign Up
+            </button>
+
+          <!--            <button>
+                   <a 
+                    mat-raised-button 
+                    color="primary"
+                    [routerLink]="['/front/login']">
+                    SignIn
+                  </a>
+            </button>
+            -->
+
+            </div>
+        </mat-card>
+    </div>

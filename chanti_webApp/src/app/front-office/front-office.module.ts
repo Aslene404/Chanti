@@ -16,6 +16,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FrontSinginComponent } from './front-singin/front-singin.component';
+import { FrontSingupComponent } from './front-singup/front-singup.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { FrontSinginComponent } from './front-singin/front-singin.component';
     ClientContactComponent,
     FrontLandpageComponent,
     ClientAboutComponent,
-    FrontSinginComponent],
+    FrontSinginComponent,
+    FrontSingupComponent],
   imports: [
     CommonModule,
     FrontOfficeRoutingModule,

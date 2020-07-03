@@ -5,6 +5,7 @@ import { ClientHomeComponent } from './client-home/client-home.component';
 import { ClientContactComponent } from './client-contact/client-contact.component';
 import { ClientAboutComponent } from './client-about/client-about.component';
 import { FrontSinginComponent } from './front-singin/front-singin.component';
+import { FrontSingupComponent } from './front-singup/front-singup.component';
 
 
 const routes: Routes = [
@@ -29,16 +30,16 @@ const routes: Routes = [
       {
         path: 'signin', component: FrontSinginComponent
       },
-      /*{
+      {
         path: 'register',
-        component: UserSignupComponent
+        component: FrontSingupComponent
       },
-      
+      /*
       {
         path:'user-settings',
         component:UpdateUserSettingsComponent
-      },
-      { path: '**', redirectTo: 'home', pathMatch: 'full' }*/
+      },*/
+      { path: '**', redirectTo: 'home', pathMatch: 'full' }
     ]
   }];
 
