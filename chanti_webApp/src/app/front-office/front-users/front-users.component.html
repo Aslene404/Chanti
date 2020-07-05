@@ -1,0 +1,87 @@
+<div class="container mx-aoto px3 py-3">
+    <mat-horizontal-stepper  #stepper class="justify-center">
+        <!-- Step 1-->
+        <mat-step>
+            <ng-template matStepLabel></ng-template>
+            <div class="w-full flex mx-auto flex-wrap py-3 flex-row items-center justify-between">
+                <div class="sm:w-1/2 lg:w-1/2 xlg:w-full md:w-1/2  px-6 py-6 content-center">
+                    <div class="flex flex-col w-full flex-wrap">
+    
+                        <div class="flex items-center justify-between bg-gray-200 p-4">
+                            <span class="text-lg text-tial-800 font-semibold ">Users</span>
+                        </div>
+    
+                        <div class="flex flex-wrap flex-col md:flex-row">
+                            <!--  Card -->
+                            <div class="flex flex-wrap bg-white border-b border-blue-tial-100 md:w-1/2 lg:w-1/3">
+                                <div class="flex w-full m-4">
+                                    <div class="flex items-center">
+                                        
+                                        <div class="flex flex-col p-4">
+                                            <a><h3 class="font-bold text-md text-tial-400">Ali</h3></a>
+                                            <span class="font-light text-sm">Choose to show more information</span>
+                                            <div class="flex">
+    
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-1 flex-grow w-full items-center justify-end">
+                                        <div class="flex items-center mr-2">
+                                            <h4 class="text-lg uppercase font-semibold text-blue-400 hover:text-blue-600">
+                                               ali@gmail.com Architecte</h4>
+    
+                                        </div>
+                                    </div>
+                                </div>
+                                <button mat-raised-button color="warn" align="center" >Delete</button>
+                            </div>
+                            <!--  End Card -->
+                        </div>
+    
+                        
+    
+                    </div>
+                </div>
+            </div>
+            
+        </mat-step>
+        <!-- End Step 1-->
+    
+        <!-- Step 2-->
+        <mat-step >
+            <ng-template matStepLabel>Add a new task to a user</ng-template>
+            
+            <form >
+                <mat-label>User fullname</mat-label>
+                <mat-form-field class="w-full mx-aoto">
+                    <input type="text" placeholder="User fullname"
+                        required>
+                   
+                </mat-form-field>
+                <mat-label>User email</mat-label>
+                <mat-form-field class="w-full mx-aoto">
+                    <input type="email" placeholder="User email"
+                        required>
+                   
+                </mat-form-field>
+                <mat-label>Task</mat-label>
+                <mat-form-field class="w-full mx-aoto">
+                    <input type="text" placeholder="Task"
+                        required>
+                   
+                </mat-form-field>
+                
+            </form>
+            <div>
+                <button mat-raised-button matStepperPrevious>Back</button>
+                <button mat-raised-button color="primary" matStepperPrevious>Add Task</button>
+            </div>
+        </mat-step>
+        <!-- End Step 2-->
+    
+        
+    
+    
+    </mat-horizontal-stepper>
+    </div>
+    

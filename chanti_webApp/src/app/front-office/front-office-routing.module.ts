@@ -6,6 +6,8 @@ import { ClientContactComponent } from './client-contact/client-contact.componen
 import { ClientAboutComponent } from './client-about/client-about.component';
 import { FrontSinginComponent } from './front-singin/front-singin.component';
 import { FrontSingupComponent } from './front-singup/front-singup.component';
+import { FrontProjectsComponent } from './front-projects/front-projects.component';
+import { FrontUsersComponent } from './front-users/front-users.component';
 
 
 const routes: Routes = [
@@ -33,6 +35,14 @@ const routes: Routes = [
       {
         path: 'register',
         component: FrontSingupComponent
+      },
+      {
+        path: 'projects',
+        component: FrontProjectsComponent
+      },
+      {
+        path: 'users',
+        component: FrontUsersComponent
       },
       /*
       {

@@ -17,6 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FrontSinginComponent } from './front-singin/front-singin.component';
 import { FrontSingupComponent } from './front-singup/front-singup.component';
+import { FrontProjectsComponent } from './front-projects/front-projects.component';
+import { FrontUsersComponent } from './front-users/front-users.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { FrontSingupComponent } from './front-singup/front-singup.component';
     FrontLandpageComponent,
     ClientAboutComponent,
     FrontSinginComponent,
-    FrontSingupComponent],
+    FrontSingupComponent,
+    FrontProjectsComponent,
+    FrontUsersComponent],
   imports: [
     CommonModule,
     FrontOfficeRoutingModule,
@@ -41,7 +45,7 @@ import { FrontSingupComponent } from './front-singup/front-singup.component';
     
   ],
   
-  exports: [ClientNavbarComponent,ClientHomeComponent,AdminNavbarComponent]
+  exports: [ClientNavbarComponent,ClientHomeComponent,AdminNavbarComponent,FrontProjectsComponent,FrontUsersComponent]
   
 })
 export class FrontOfficeModule { }
