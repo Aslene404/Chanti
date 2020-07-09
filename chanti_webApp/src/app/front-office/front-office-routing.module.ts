@@ -7,7 +7,8 @@ import { ClientAboutComponent } from './client-about/client-about.component';
 import { FrontSinginComponent } from './front-singin/front-singin.component';
 import { FrontSingupComponent } from './front-singup/front-singup.component';
 import { FrontProjectsComponent } from './front-projects/front-projects.component';
-import { FrontUsersComponent } from './front-users/front-users.component';
+import { FrontStaffComponent } from './front-staff/front-staff.component';
+
 
 
 const routes: Routes = [
@@ -39,11 +40,14 @@ const routes: Routes = [
       {
         path: 'projects',
         component: FrontProjectsComponent
+        //canActivate:[AuthGuard]
       },
       {
-        path: 'users',
-        component: FrontUsersComponent
+        path: 'staff',
+        component: FrontStaffComponent
+        //canActivate:[AuthGuard]
       },
+      
       /*
       {
         path:'user-settings',

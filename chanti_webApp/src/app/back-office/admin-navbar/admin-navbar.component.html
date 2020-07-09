@@ -15,7 +15,7 @@
             <nav>
                 <ul class="md:flex items-center justify-between text-base pt-4 md:pt-0">
                     <li>
-                        <a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" [routerLink]='["/front/home"]' routerLinkActive="active-link"
+                        <a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" [routerLink]='["/back/home"]' routerLinkActive="active-link"
                         [routerLinkActive]='["active","inactive"]' mat-button>
                             <mat-icon>home</mat-icon>
                             Home
@@ -24,12 +24,13 @@
                     
                 
                     <li>
-                        <a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" mat-button>
+                        <a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" [routerLink]='["/back/users"]' routerLinkActive="active-link"
+                        [routerLinkActive]='["active","inactive"]' mat-button>
                             Users
                         </a>
                     </li>
                     <li>
-                        <a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" [routerLink]='["/front/projects"]' routerLinkActive="active-link"
+                        <a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" [routerLink]='["/back/projects"]' routerLinkActive="active-link"
                         [routerLinkActive]='["active","inactive"]' mat-button>
                             Projets
                         </a>
