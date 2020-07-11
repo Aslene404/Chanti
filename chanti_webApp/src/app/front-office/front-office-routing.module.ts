@@ -8,7 +8,7 @@ import { FrontSinginComponent } from './front-singin/front-singin.component';
 import { FrontSingupComponent } from './front-singup/front-singup.component';
 import { FrontProjectsComponent } from './front-projects/front-projects.component';
 import { FrontStaffComponent } from './front-staff/front-staff.component';
-
+import {EditProjectComponent} from './edit-project/edit-project.component'
 
 
 const routes: Routes = [
@@ -40,6 +40,11 @@ const routes: Routes = [
       {
         path: 'projects',
         component: FrontProjectsComponent
+        //canActivate:[AuthGuard]
+      },
+      {
+        path: 'projects/edit',
+        component: EditProjectComponent
         //canActivate:[AuthGuard]
       },
       {

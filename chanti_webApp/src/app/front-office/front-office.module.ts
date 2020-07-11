@@ -18,6 +18,9 @@ import { FrontSinginComponent } from './front-singin/front-singin.component';
 import { FrontSingupComponent } from './front-singup/front-singup.component';
 import { FrontProjectsComponent } from './front-projects/front-projects.component';
 import { FrontStaffComponent } from './front-staff/front-staff.component';
+import { EditProjectComponent } from './edit-project/edit-project.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
@@ -32,7 +35,8 @@ import { FrontStaffComponent } from './front-staff/front-staff.component';
     FrontSinginComponent,
     FrontSingupComponent,
     FrontProjectsComponent,
-    FrontStaffComponent],
+    FrontStaffComponent,
+    EditProjectComponent],
   imports: [
     CommonModule,
     FrontOfficeRoutingModule,
@@ -41,6 +45,8 @@ import { FrontStaffComponent } from './front-staff/front-staff.component';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
     
   ],
   exports:[PageFooterComponent,ClientNavbarComponent]
