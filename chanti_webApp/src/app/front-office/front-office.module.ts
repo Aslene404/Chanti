@@ -14,14 +14,15 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FrontSinginComponent } from './front-singin/front-singin.component';
-import { FrontSingupComponent } from './front-singup/front-singup.component';
 import { FrontProjectsComponent } from './front-projects/front-projects.component';
 import { FrontStaffComponent } from './front-staff/front-staff.component';
 import { EditProjectComponent } from './edit-project/edit-project.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { UserLogoutComponent } from './user-logout/user-logout.component';
+import { FrontSingupComponent } from '../shared/user/front-singup/front-singup.component';
+import { UserLogoutComponent } from '../shared/user/user-logout/user-logout.component';
+import { UserService } from '../shared/user/user.service';
+import { SigninComponent } from '../shared/user/signin/front-singin.component';
 
 
 
@@ -33,7 +34,7 @@ import { UserLogoutComponent } from './user-logout/user-logout.component';
     ClientContactComponent,
     FrontLandpageComponent,
     ClientAboutComponent,
-    FrontSinginComponent,
+    SigninComponent,
     FrontSingupComponent,
     FrontProjectsComponent,
     FrontStaffComponent,
@@ -51,7 +52,8 @@ import { UserLogoutComponent } from './user-logout/user-logout.component';
     MatNativeDateModule
     
   ],
-  exports:[PageFooterComponent,ClientNavbarComponent]
+  exports:[PageFooterComponent,ClientNavbarComponent],
+  providers:[UserService]
   
   
 })

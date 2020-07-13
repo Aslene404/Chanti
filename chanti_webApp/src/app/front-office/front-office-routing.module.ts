@@ -4,11 +4,13 @@ import { FrontLandpageComponent } from './front-landpage/front-landpage.componen
 import { ClientHomeComponent } from './client-home/client-home.component';
 import { ClientContactComponent } from './client-contact/client-contact.component';
 import { ClientAboutComponent } from './client-about/client-about.component';
-import { FrontSinginComponent } from './front-singin/front-singin.component';
-import { FrontSingupComponent } from './front-singup/front-singup.component';
+
 import { FrontProjectsComponent } from './front-projects/front-projects.component';
 import { FrontStaffComponent } from './front-staff/front-staff.component';
 import {EditProjectComponent} from './edit-project/edit-project.component'
+
+import { FrontSingupComponent } from '../shared/user/front-singup/front-singup.component';
+import { SigninComponent } from '../shared/user/signin/front-singin.component';
 
 
 const routes: Routes = [
@@ -31,7 +33,7 @@ const routes: Routes = [
       },
       
       {
-        path: 'signin', component: FrontSinginComponent
+        path: 'signin', component: SigninComponent
       },
       {
         path: 'register',

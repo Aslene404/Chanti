@@ -128,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "chantiapp"
+  "defaultProject": "chantiapp",
+  "cli": {
+    "analytics": "95dfcc9b-976a-477e-a785-7c5ad348618b"
+  }
 }

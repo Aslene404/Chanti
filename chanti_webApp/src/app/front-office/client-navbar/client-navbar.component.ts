@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IUser } from '../iuser';
+
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
+import { IUser } from 'src/app/shared/user/user.model';
 
 @Component({
   selector: 'app-client-navbar',
