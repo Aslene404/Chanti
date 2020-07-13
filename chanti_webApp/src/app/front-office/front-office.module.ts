@@ -21,6 +21,7 @@ import { FrontStaffComponent } from './front-staff/front-staff.component';
 import { EditProjectComponent } from './edit-project/edit-project.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { UserLogoutComponent } from './user-logout/user-logout.component';
 
 
 
@@ -36,7 +37,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     FrontSingupComponent,
     FrontProjectsComponent,
     FrontStaffComponent,
-    EditProjectComponent],
+    EditProjectComponent,
+    UserLogoutComponent],
   imports: [
     CommonModule,
     FrontOfficeRoutingModule,

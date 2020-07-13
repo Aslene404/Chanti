@@ -51,14 +51,26 @@
                         </a>
                     </li>
                     <li>
-                        <a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" [routerLink]='["/front/signin"]' routerLinkActive="active-link"
+                        <a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" *ngIf="!currentUser" [routerLink]='["/front/signin"]' routerLinkActive="active-link"
                         [routerLinkActive]='["active","inactive"]'  mat-button>
                             <mat-icon>person</mat-icon>
                             SignIn
                             
                         </a>
                     </li>
-                    
+                    <li>
+                        <div *ngIf="currentUser">
+                            <app-user-logout [currentUser]="currentUser" (onLogout)="logout()"></app-user-logout>
+                        </div>
+                    </li>
+                    <li>
+                        <div  *ngIf="currentUser && currentUser.role=='ADMIN'">
+                            <a [routerLink]='["/back/stat"]' mat-button md:text-right>
+                                <mat-icon>menu</mat-icon>
+                                Admin
+                            </a>
+                        </div>
+                    </li>
                 </ul>
             </nav>
         </div>

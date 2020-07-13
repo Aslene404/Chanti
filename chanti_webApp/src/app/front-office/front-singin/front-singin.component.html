@@ -7,7 +7,7 @@
   </div>
      <mat-card class="login">
      <h1 class="text-blue-700 font-bold text-center">Sign In</h1><br>
-      <form >
+      <form [formGroup]="loginForm" #f>
         <div > 
          <mat-form-field appearance="fill" class="w-64">
                 <mat-label>Email</mat-label>
@@ -17,8 +17,9 @@
                   matInput 
                   placeholder="Enter your email"
                   required
+                  formControlName="email"
                   >
-                  
+                  <mat-error *ngIf="loginForm.value.email.invalid || loginForm.hasError">{{getErrorMessage()}}</mat-error>
                 <mat-icon matPrefix>email</mat-icon>
             </mat-form-field>
         </div>
@@ -28,7 +29,7 @@
                 <input type="password" 
                   matInput 
                   placeholder="Enter your password" 
-                  
+                  formControlName="password"
                   
                   required >
                   <mat-icon matPrefix>lock</mat-icon>
@@ -42,8 +43,8 @@
     <div class="flex items-center justify-between">
       <div>
         <button 
-          mat-raised-button 
-          color="primary"
+        mat-stroked-button color="primary"
+        class="w-full" [disabled]="!loginForm.valid" (click)="onSubmit()"
          >Signin
         </button>
       </div>
