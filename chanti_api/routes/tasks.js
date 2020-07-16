@@ -1,29 +1,29 @@
 const express = require('express');
 const router = express.Router();
-const Project = require('../db/models/project-schema');
+const Task = require('../db/models/task-schema');
 const helpers = require('../helpers/user-validation');
 
 
-const projectService = require('../services/project-service')(Project);
+const taskService = require('../services/task-service')(Task);
 
 
 
 // @ts-check
-// POST /addProject
-router.post('/addProject', async function (req, res, next) {
+// POST /addTask
+router.post('/addTask', async function (req, res, next) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      res.status(422).json({
-        status: "fail",
+      res.fdate(422).json({
+        fdate: "fail",
         message: errors.array(),
         payload: null
       });
     } else {
       let {
-        ...project
+        ...task
       } = req.body
       try {
-        let response = await projectService.addProject(project);
+        let response = await taskService.addTask(task);
         res.json(response);
       } catch (error) {
         next(error)
@@ -36,10 +36,10 @@ router.post('/addProject', async function (req, res, next) {
 
 
 // @ts-check
-// GET / get All projects
+// GET / get All tasks
 router.get('/', helpers.validateUser, helpers.isAdmin, async function (req, res, next) {
   try {
-    let response = await projectService.getAllProjects();
+    let response = await taskService.getAllTasks();
     if (response) {
       res.json(response)
     }
@@ -50,14 +50,14 @@ router.get('/', helpers.validateUser, helpers.isAdmin, async function (req, res,
 
 
 /**
- * Get Project By Id
- * GET /project/:id
+ * Get Task By Id
+ * GET /task/:id
  */
 
-router.get('/project/:id', helpers.validateUser, async function (req, res,next) {
+router.get('/task/:id', helpers.validateUser, async function (req, res,next) {
   let id = req.params.id;
   try {
-    let response = await projectService.getProjectById(id);
+    let response = await taskService.getTaskById(id);
     if (response) {
       return res.json(response);
     }
@@ -68,26 +68,26 @@ router.get('/project/:id', helpers.validateUser, async function (req, res,next) 
 })
 
 
-// Update Project Info
+// Update Task Info
 // PUT /update/:id
 router.put('/update/:id', helpers.validateUser, async function (req, res,next) {
   if (
-    !req.body.hasOwnProperty('projectname') &&
-    !req.body.hasOwnProperty('owner') &&
-    !req.body.hasOwnProperty('status')) {
-    res.status(422).json({
-      status: "error",
-      message: 'You Should send projectname and/or owner and/or status',
+    !req.body.hasOwnProperty('taskname') &&
+    !req.body.hasOwnProperty('sdate') &&
+    !req.body.hasOwnProperty('fdate')) {
+    res.fdate(422).json({
+      fdate: "error",
+      message: 'You Should send taskname and/or sdate and/or fdate',
       payload: null
     });
   } else {
-    let projectId = req.params.id;
-    let project = {
+    let taskId = req.params.id;
+    let task = {
       ...req.body
     };
 
     try {
-      let response = await projectService.updateProject(projectId, project);
+      let response = await taskService.updateTask(taskId, task);
       if (response) {
         res.json(response);
       }
@@ -106,12 +106,12 @@ router.put('/update/:id', helpers.validateUser, async function (req, res,next) {
 
 
 
-// Delete Project
+// Delete Task
 // DELETE /delete/:id
 router.delete('/delete/:id', async function (req, res, next) {
   let id = req.params.id;
   try {
-    let response = await projectService.deleteProject(id);
+    let response = await taskService.deleteTask(id);
     if(response){
       res.json(response);
     }

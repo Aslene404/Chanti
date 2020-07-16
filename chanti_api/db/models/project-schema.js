@@ -28,6 +28,18 @@ const ProjectSchema = new Schema({
         trim: true,
         required: [true, 'status is required'],
 		default: 'in progress'
+    },
+	task: { 
+        type: Schema.Types.ObjectId,
+        ref: "Task"
+    },
+	material: { 
+        type: Schema.Types.ObjectId,
+        ref: "Material"
+    },
+	staff: { 
+        type: Schema.Types.ObjectId,
+        ref: "User"
     }
     
 });

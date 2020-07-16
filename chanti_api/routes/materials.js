@@ -1,16 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const Project = require('../db/models/project-schema');
+const Material = require('../db/models/material-schema');
 const helpers = require('../helpers/user-validation');
 
 
-const projectService = require('../services/project-service')(Project);
+const materialService = require('../services/material-service')(Material);
 
 
 
 // @ts-check
-// POST /addProject
-router.post('/addProject', async function (req, res, next) {
+// POST /addMaterial
+router.post('/addMaterial', async function (req, res, next) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       res.status(422).json({
@@ -20,10 +20,10 @@ router.post('/addProject', async function (req, res, next) {
       });
     } else {
       let {
-        ...project
+        ...material
       } = req.body
       try {
-        let response = await projectService.addProject(project);
+        let response = await materialService.addMaterial(material);
         res.json(response);
       } catch (error) {
         next(error)
@@ -36,10 +36,10 @@ router.post('/addProject', async function (req, res, next) {
 
 
 // @ts-check
-// GET / get All projects
+// GET / get All materials
 router.get('/', helpers.validateUser, helpers.isAdmin, async function (req, res, next) {
   try {
-    let response = await projectService.getAllProjects();
+    let response = await materialService.getAllMaterials();
     if (response) {
       res.json(response)
     }
@@ -50,14 +50,14 @@ router.get('/', helpers.validateUser, helpers.isAdmin, async function (req, res,
 
 
 /**
- * Get Project By Id
- * GET /project/:id
+ * Get Material By Id
+ * GET /material/:id
  */
 
-router.get('/project/:id', helpers.validateUser, async function (req, res,next) {
+router.get('/material/:id', helpers.validateUser, async function (req, res,next) {
   let id = req.params.id;
   try {
-    let response = await projectService.getProjectById(id);
+    let response = await materialService.getMaterialById(id);
     if (response) {
       return res.json(response);
     }
@@ -68,26 +68,26 @@ router.get('/project/:id', helpers.validateUser, async function (req, res,next) 
 })
 
 
-// Update Project Info
+// Update Material Info
 // PUT /update/:id
 router.put('/update/:id', helpers.validateUser, async function (req, res,next) {
   if (
-    !req.body.hasOwnProperty('projectname') &&
-    !req.body.hasOwnProperty('owner') &&
+    !req.body.hasOwnProperty('materialname') &&
+    !req.body.hasOwnProperty('quantity') &&
     !req.body.hasOwnProperty('status')) {
     res.status(422).json({
       status: "error",
-      message: 'You Should send projectname and/or owner and/or status',
+      message: 'You Should send materialname and/or quantity and/or status',
       payload: null
     });
   } else {
-    let projectId = req.params.id;
-    let project = {
+    let materialId = req.params.id;
+    let material = {
       ...req.body
     };
 
     try {
-      let response = await projectService.updateProject(projectId, project);
+      let response = await materialService.updateMaterial(materialId, material);
       if (response) {
         res.json(response);
       }
@@ -106,12 +106,12 @@ router.put('/update/:id', helpers.validateUser, async function (req, res,next) {
 
 
 
-// Delete Project
+// Delete Material
 // DELETE /delete/:id
 router.delete('/delete/:id', async function (req, res, next) {
   let id = req.params.id;
   try {
-    let response = await projectService.deleteProject(id);
+    let response = await materialService.deleteMaterial(id);
     if(response){
       res.json(response);
     }

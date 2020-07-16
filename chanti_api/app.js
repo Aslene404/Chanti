@@ -5,9 +5,12 @@ const logger = require('morgan');
 const cors = require('cors');
 
 
+
 const usersRouter = require('./routes/users');
-
-
+const contactRouter= require('./routes/contact');
+const materialsRouter= require('./routes/materials');
+const projectsRouter= require('./routes/projects');
+const tasksRouter= require('./routes/tasks');
 const app = express();
 app.use(cors());
 
@@ -20,7 +23,10 @@ app.use(express.urlencoded({
 
 
 app.use('/api/v1/users', usersRouter);
-
+app.use('/api/v1/contact' ,contactRouter);
+app.use('/api/v1/materials', materialsRouter);
+app.use('/api/v1/tasks', tasksRouter);
+app.use('/api/v1/projects', projectsRouter);
 
 
 // catch 404 and forward to error handler

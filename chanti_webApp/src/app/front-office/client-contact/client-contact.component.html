@@ -1,91 +1,70 @@
 <div class="font-bold">
     <div class="flex justify-center">
-        
-            <div class="bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 flex flex-col w-screen h-screen ">
-                <div class="flex justify-center">
-                    <form >
-                        <div class="flex flex-row w-full flex-wrap">
-                            <div class="-mx-3 md:flex mb-2 px-3 flex-wrap">
-                                <div class="flex-auto px-3 mb-6 md:mb-0">
-                                    <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-                                        for="grid-first-name">
-                                        Name
-                                    </label>
-                                    <input
-                                        class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
-                                        id="grid-first-name" 
-                                        type="text" 
-                                        
-                                        required
-                                        placeholder="Fullname" 
-                                        >
-                                </div>
-                            </div>
 
-                            <div class="-mx-3 md:flex mb-2">
-                                <div class="flex-wrap px-3 mb-6 md:mb-0">
-                                    <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-                                        for="grid-city">
-                                        Email
-                                    </label>
-                                    <input
-                                        class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
-                                        id="grid-city"
-                                        type="email" required
-                                        
-                                        placeholder="e-mail"
-                                        >
-                                       
-                                </div>
-
+        <div class="bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 flex flex-col w-screen h-screen ">
+            <div class="flex justify-center">
+                <form [formGroup]="contactForm">
+                    <div class="flex flex-row w-full flex-wrap">
+                        <div class="-mx-3 md:flex mb-2 px-3 flex-wrap">
+                            <div class="flex-auto px-3 mb-6 md:mb-0">
+                                <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                                    for="grid-first-name">
+                                    Name
+                                </label>
+                                <input
+                                    class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
+                                    id="grid-first-name" type="text" formControlName="fullname" required
+                                    placeholder="Fullname" [readonly]="existUser"
+                                    [ngClass]="existUser ? 'exist' : 'notexist' ">
                             </div>
                         </div>
 
-                        <div class="flex flex-row w-full flex-wrap sm:w-full md:w-full">
-                            <div class="-mx-3 md:flex mb-2 px-3 flex-wrap">
-                                <div class="flex-wrap px-3 mb-6 md:mb-0">
-                                    <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-                                        for="grid-city">
-                                        City
-                                    </label>
-                                    <input
-                                        class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
-                                        id="grid-city" type="text"  
-                                        required placeholder="city" 
-                                        >
+                        <div class="-mx-3 md:flex mb-2">
+                            <div class="flex-wrap px-3 mb-6 md:mb-0">
+                                <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                                    for="grid-city">
+                                    Email
+                                </label>
+                                <input
+                                    class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
+                                    id="grid-city" type="email" required formControlName="email" placeholder="e-mail"
+                                    [readonly]="existUser" [ngClass]="existUser ? 'exist' : 'notexist' ">
 
-                                </div>
                             </div>
-                            <div class="-mx-3 md:flex mb-2">
-                                <div class="flex-wrap px-3 mb-6 md:mb-0">
-                                    <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-                                        for="grid-zip">
-                                        Phone
-                                    </label>
-                                    <input
-                                        class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
-                                        id="grid-zip" type="text" required 
-                                        placeholder="00 00 00 00" 
-                                        >
 
-                                </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-row w-full flex-wrap sm:w-full md:w-full">
+                       
+                        <div class="-mx-3 md:flex mb-2">
+                            <div class="flex-wrap px-3 mb-6 md:mb-0">
+                                <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                                    for="grid-zip">
+                                    Phone
+                                </label>
+                                <input
+                                    class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
+                                    id="grid-zip" type="text" required placeholder="00 00 00 00" formControlName="phone"
+                                    [readonly]="existUser" [ngClass]="existUser ? 'exist' : 'notexist' ">
+
                             </div>
                         </div>
+                    </div>
 
-                        <label class="w-full block text-sm font-bold mb-2">
-                            Opinion
-                            <div class="flex-auto mt-2 mb:mt-0 px-9">
-                                <textarea class="w-full shadow-inner p-4 border-0" placeholder="Opinion..." rows="4"
-                                    required >
+                    <label class="w-full block text-sm font-bold mb-2">
+                        Opinion
+                        <div class="flex-auto mt-2 mb:mt-0 px-9">
+                            <textarea class="w-full shadow-inner p-4 border-0" placeholder="Opinion..." rows="4"
+                                required formControlName="opinion">
                     </textarea>
-                            </div>
-                        </label>
-                        <button mat-raised-button color="primary"  
-                                                  >Send
-                        </button>
-                    </form>
-                </div>
+                        </div>
+                    </label>
+                    <button mat-raised-button color="primary" (click)="send()" >Send
+                    </button>
+                </form>
             </div>
-        
+        </div>
+
     </div>
 </div>
