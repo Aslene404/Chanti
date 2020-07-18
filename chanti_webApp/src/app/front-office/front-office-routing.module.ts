@@ -11,6 +11,7 @@ import {EditProjectComponent} from './edit-project/edit-project.component'
 
 import { FrontSingupComponent } from '../shared/user/front-singup/front-singup.component';
 import { SigninComponent } from '../shared/user/signin/front-singin.component';
+import { AuthGuard } from '../_gards/auth.guard';
 
 
 const routes: Routes = [
@@ -41,13 +42,13 @@ const routes: Routes = [
       },
       {
         path: 'projects',
-        component: FrontProjectsComponent
-        //canActivate:[AuthGuard]
+        component: FrontProjectsComponent,
+        canActivate:[AuthGuard]
       },
       {
-        path: 'projects/edit',
-        component: EditProjectComponent
-        //canActivate:[AuthGuard]
+        path: 'projects/edit/:id',
+        component: EditProjectComponent,
+        canActivate:[AuthGuard]
       },
       {
         path: 'staff',

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Project = require('../db/models/project-schema');
 const helpers = require('../helpers/user-validation');
+const { check, validationResult } = require('express-validator');
 
 
 const projectService = require('../services/project-service')(Project);
@@ -37,7 +38,7 @@ router.post('/addProject', async function (req, res, next) {
 
 // @ts-check
 // GET / get All projects
-router.get('/', helpers.validateUser, helpers.isAdmin, async function (req, res, next) {
+router.get('/', helpers.validateUser, async function (req, res, next) {
   try {
     let response = await projectService.getAllProjects();
     if (response) {
@@ -54,10 +55,25 @@ router.get('/', helpers.validateUser, helpers.isAdmin, async function (req, res,
  * GET /project/:id
  */
 
-router.get('/project/:id', helpers.validateUser, async function (req, res,next) {
+router.get('/byId/:id', helpers.validateUser, async function (req, res,next) {
   let id = req.params.id;
+
   try {
     let response = await projectService.getProjectById(id);
+    if (response) {
+      return res.json(response);
+    }
+  } catch (error) {
+    next(error);
+  }
+
+})
+
+router.get('/userprojects/:userId', helpers.validateUser, async function (req, res,next) {
+  let id = req.params.userId;
+  console.log(id);
+  try {
+    let response = await projectService.getUserProjects(id);
     if (response) {
       return res.json(response);
     }

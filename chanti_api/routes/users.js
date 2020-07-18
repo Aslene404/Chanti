@@ -62,7 +62,9 @@ router.post('/authenticate', [check('email').isEmail()], async function (req, re
 
 // @ts-check
 // GET / get All users
-router.get('/', helpers.validateUser, helpers.isAdmin, async function (req, res, next) {
+
+//TODO: get All Users must be garded with middle ware
+router.get('/', async function (req, res, next) {
   try {
     let response = await userService.getAllUsers();
     if (response) {
@@ -204,3 +206,4 @@ router.delete('/delete/:id', helpers.validateUser, helpers.isAdmin, async functi
 
 
 module.exports = router;
+

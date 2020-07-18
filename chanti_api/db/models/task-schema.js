@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-const beautifyUnique = require('mongoose-beautiful-unique-validation');
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
+const Project = require('./project-schema');
+
 
 
 
@@ -13,6 +12,9 @@ const Schema = mongoose.Schema;
  * Task Schema
  */
 const TaskSchema = new Schema({
+	project :{
+		type: mongoose.Schema.Types.ObjectId,
+		ref:'Project'},
     taskname: {
         type: String,
         trim: true,
@@ -35,7 +37,6 @@ const TaskSchema = new Schema({
         ref: "User"
     }
     
-	
     
 });
 
