@@ -283,7 +283,7 @@ module.exports = (Project) => {
         getAllProjects: getAllProjects(Project),
         getProjectById: getProjectById(Project),
         updateProject: updateProject(Project),
-        
+        updateProjectStatus:updateProjectStatus(Project),
         deleteProject: deleteProject(Project),
         assignStaffToProject: assignStaffToProject(Project),
         assignTaskToProject: assignTaskToProject(Project)
