@@ -1,177 +1,170 @@
-<html>
-<body class="h-screen overflow-hidden flex items-center justify-center" style="background: #edf2f7;">
-    <body class="antialiased font-sans bg-gray-200">
-    <div class="container mx-auto px-4 sm:px-8">
-        <div class="py-8">
-            <div>
-                <h2 class="text-2xl font-semibold leading-tight">My Projects</h2>
-            </div>
-            <div class="my-2 flex sm:flex-row flex-col">
-                <div class="flex flex-row mb-1 sm:mb-0">
-                    <div class="relative">
-                        <select
-                            class="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                            <option>5</option>
-                            <option>10</option>
-                            <option>20</option>
-                        </select>
-                        <div
-                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                            </svg>
+<div class="h-screen overflow-hidden flex items-center justify-center" style="background: #edf2f7;">
+
+    <div class="antialiased font-sans bg-gray-200">
+        <div class="container mx-auto px-4 sm:px-8">
+            <div class="py-8">
+                <div>
+                    <h2 class="text-2xl font-semibold leading-tight">My Projects</h2>
+                </div>
+                <div class="my-2 flex sm:flex-row flex-col">
+                    <div class="flex flex-row mb-1 sm:mb-0">
+                        <div class="relative">
+                            <select
+                                class="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                                <option>5</option>
+                                <option>10</option>
+                                <option>20</option>
+                            </select>
+                            <div
+                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20">
+                                    <path
+                                        d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <select
+                                class="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
+                                <option>All</option>
+                                <option>In Progress</option>
+                                <option>Completed</option>
+                            </select>
+                            <div
+                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20">
+                                    <path
+                                        d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                </svg>
+                            </div>
                         </div>
                     </div>
-                    <div class="relative">
-                        <select
-                            class="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
-                            <option>All</option>
-                            <option>In Progress</option>
-                            <option>Completed</option>
-                        </select>
-                        <div
-                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                    <div class="block relative">
+                        <span class="h-full absolute inset-y-0 left-0 flex items-center pl-2">
+                            <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current text-gray-500">
+                                <path
+                                    d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z">
+                                </path>
                             </svg>
-                        </div>
+                        </span>
+                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search"
+                            class="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none" />
+
                     </div>
+                    <div class="block relative">
+
+                    </div>
+
                 </div>
-                <div class="block relative">
-                    <span class="h-full absolute inset-y-0 left-0 flex items-center pl-2">
-                        <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current text-gray-500">
-                            <path
-                                d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z">
-                            </path>
-                        </svg>
-                    </span>
-                    <input placeholder="Search"
-                        class="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none" />
-                        
-                </div>
-                <div class="block relative">
-                    
-                
-                
-            </div>
-            
-            </div>
-            <mat-form-field hintLabel="Max 10 characters" appearance="fill">
-                <mat-label>Enter New Project Name</mat-label>
-                <input matInput #input maxlength="10" placeholder="Ex. Nougat">
-                <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
-              </mat-form-field>
-            
-              <mat-form-field appearance="fill">
-                <mat-label>Select Status</mat-label>
-                <mat-select>
-                  <mat-option value="option">Done</mat-option>
-                  <mat-option value="option">In Progress</mat-option>
-                </mat-select>
-                
-              </mat-form-field>
-              <a class="text-blue-700" mat-button><mat-icon>add_circle</mat-icon>Add Project</a>
-            <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-                <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
-                    <table class="min-w-full leading-normal">
-                        <thead>
-                            <tr>
-                                <th
+                <form [formGroup]="addProjectForm">
+                    <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+                        <mat-label>Enter New Project Name</mat-label>
+                        <input formControlName="projectname" matInput #input maxlength="10" required
+                            placeholder="Ex. Nougat">
+                        <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Select Status</mat-label>
+                        <mat-select formControlName="status">
+                            <mat-option value="done">Done</mat-option>
+                            <mat-option value="in progress">In Progress</mat-option>
+                        </mat-select>
+
+                    </mat-form-field>
+                    <a class="text-blue-700" (click)="send()" mat-button>
+                        <mat-icon>add_circle</mat-icon>Add Project
+                    </a>
+                </form>
+
+                <!-- Projects List -->
+                <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+                    <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+                        <table mat-table [dataSource]="dataSource" matSort class="min-w-full leading-normal">
+                            <ng-container matColumnDef="projectname">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header
                                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                    Project name
+                                    Project Name
                                 </th>
-                                <th
+                                <td mat-cell *matCellDef="let element"
+                                    class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <div class="flex items-center">
+
+                                        <div class="ml-3">
+                                            <p class="text-gray-900 whitespace-no-wrap">
+                                                {{element.projectname}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="status">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header
                                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                     Status
                                 </th>
-                                
-                               
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <div class="flex items-center">
-                                    
-                                        <div class="ml-3">
-                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                Tunis Bridge
-                                            </p>
-                                        </div>
+                                <td mat-cell *matCellDef="let element">
+                                    <div *ngIf="element.status ==='done'"
+                                        class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <span
+                                            class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                                            <span aria-hidden
+                                                class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
+                                            <span class="relative">
+                                                <mat-icon>done</mat-icon>Done
+                                            </span>
+                                        </span>
                                     </div>
                                 </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <span
-                                        class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                        <span aria-hidden
-                                            class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                                       <span class="relative"><mat-icon>done</mat-icon>Done</span>
-                                    </span>
-                                </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-red-600">
-                                    
-                                </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-gray-900">
-                                    <a [routerLink]='["/front/projects/edit"]' mat-button><mat-icon>edit</mat-icon></a>
-                                </td>
-                                
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-red-600">
-                                    <a class="text-red-600" mat-button><mat-icon>cancel</mat-icon></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <div class="flex items-center">
-                                    
-                                        <div class="ml-3">
-                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                Mahdia Bridge
-                                            </p>
-                                        </div>
+                                <td mat-cell *matCellDef="let element">
+
+                                    <div *ngIf="element.status==='in progress'"
+                                        class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <span
+                                            class="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
+                                            <span aria-hidden
+                                                class="absolute inset-0 bg-yellow-200 opacity-50 rounded-full"></span>
+                                            <span class="relative">
+                                                <mat-icon>timelapse</mat-icon>In Progress
+                                            </span>
+                                            <a (click)="markCompleted(element._id)" mat-button>
+                                                <mat-icon>done_all</mat-icon>Mark as completed
+                                            </a>
+                                        </span>
                                     </div>
                                 </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <span
-                                        class="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
-                                        <span aria-hidden
-                                            class="absolute inset-0 bg-yellow-200 opacity-50 rounded-full"></span>
-                                       <span class="relative"><mat-icon>timelapse</mat-icon>In Progress</span>
-                                    </span>
+
+
+                            </ng-container>
+                            <ng-container matColumnDef="edit">
+                                <th mat-header-cell *matHeaderCellDef> Edit </th>
+                                <td mat-cell *matCellDef="let element">
+
+                                    <a [routerLink]='["/front/projects/edit",element._id]' mat-button>
+                                        <mat-icon>edit</mat-icon>
+                                    </a>
                                 </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-gray-900">
-                                    <a mat-button><mat-icon>done_all</mat-icon>Mark as completed</a>
+                            </ng-container>
+                            <ng-container matColumnDef="delete">
+                                <th mat-header-cell *matHeaderCellDef> Delete </th>
+                                <td mat-cell *matCellDef="let element">
+
+                                    <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" color="warn"
+                                        (click)="deleteProject(element._id)">
+                                        <mat-icon aria-label="Delete">delete</mat-icon>
+                                    </button>
                                 </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-gray-900">
-                                    <a [routerLink]='["/front/projects/edit"]' mat-button><mat-icon>edit</mat-icon></a>
-                                </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-red-600">
-                                    <a class="text-red-600" mat-button><mat-icon>cancel</mat-icon></a>
-                                </td>
-                                
-                            </tr>
-                            
-                            
-                                
-                        </tbody>
-                    </table>
-                    <div
-                        class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
-                        
-                        <div class="inline-flex mt-2 xs:mt-0">
-                            <button
-                                class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l">
-                                Prev
-                            </button>
-                            <button
-                                class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r">
-                                Next
-                            </button>
-                        </div>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+                        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
-</body>
-</body>
-</html>
+</div>

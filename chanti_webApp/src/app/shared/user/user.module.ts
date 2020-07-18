@@ -1,19 +1,21 @@
 import { NgModule } from '@angular/core';
 import { FrontSingupComponent } from './front-singup/front-singup.component';
 import { UserLogoutComponent } from './user-logout/user-logout.component';
-import { FrontSinginComponent } from './front-singin/front-singin.component';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
 import { UserService } from './user.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from '../helpers/jwt.interceptor';
+import { ErrorInterceptor } from '../helpers/error.interceptor';
 
 
 
 
 @NgModule({
   declarations: [
-    FrontSinginComponent,
+    FrontSingupComponent,
     FrontSingupComponent,
     UserLogoutComponent
 
@@ -27,10 +29,13 @@ import { UserService } from './user.service';
 
   ],
   exports: [
-    FrontSinginComponent,
+    FrontSingupComponent,
     FrontSingupComponent,
     UserLogoutComponent
   ],
-  providers: [UserService]
+  providers: [UserService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  ]
 })
 export class UserModule { }

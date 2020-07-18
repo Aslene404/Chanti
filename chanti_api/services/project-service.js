@@ -69,6 +69,36 @@ const getProjectById = Project => async (id) => {
 }
 
 
+const getUserProjects = Project => async (userId)=>{
+    if (userId === undefined) {
+        return ({
+            status: "error",
+            message: `Can't get project for this user`,
+            payload: null
+        });
+    }
+    try {
+        let projects = await Project.find({owner:userId})
+                                   .populate({path:'owner'})
+                                   .populate({path:'tasks',populate:{path:"tasks"}} )
+                                   .populate({path:'materials',populate:{path:"materials"}})
+                                   .populate({path:'staff',populate:{path:"staff"}});
+        if (projects) {
+            return ({
+                status: "success",
+                message: `All Projects for this user`,
+                payload: projects
+            });
+        }
+    } catch (error) {
+        return ({
+            status: "error",
+            message: `Error can't get projects for this user`,
+            payload: null
+        });
+    }
+}
+
 const updateProject = Project => async (id, project) => {
     if (project === undefined || JSON.stringify(project) === "{}") {
         return ({
@@ -283,9 +313,10 @@ module.exports = (Project) => {
         getAllProjects: getAllProjects(Project),
         getProjectById: getProjectById(Project),
         updateProject: updateProject(Project),
-        
+        updateProjectStatus:updateProjectStatus(Project),
         deleteProject: deleteProject(Project),
         assignStaffToProject: assignStaffToProject(Project),
-        assignTaskToProject: assignTaskToProject(Project)
+        assignTaskToProject: assignTaskToProject(Project),
+        getUserProjects:getUserProjects(Project)
     }
 }

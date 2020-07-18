@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const beautifyUnique = require('mongoose-beautiful-unique-validation');
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
+const User = require('./user-schema');
+const Task = require('./task-schema');
+const Material = require('./material-schema');
 
 
 
@@ -19,9 +19,10 @@ const ProjectSchema = new Schema({
         required: [true, 'project name is required']
     },
     owner:{
-		type: String,
+		type: Schema.Types.ObjectId,
 		trim: true,
-		required :[true, 'owner is required']
+        required :[true, 'owner is required'],
+        ref:'User'
 	},
     status: {
         type: String,
@@ -29,18 +30,18 @@ const ProjectSchema = new Schema({
         required: [true, 'status is required'],
 		default: 'in progress'
     },
-	task: { 
+	tasks:[ { 
         type: Schema.Types.ObjectId,
         ref: "Task"
-    },
-	material: { 
-        type: Schema.Types.ObjectId,
+    }],
+	materials: [{ 
+        type:Schema.Types.ObjectId,
         ref: "Material"
-    },
-	staff: { 
+    }],
+	staff:[ { 
         type: Schema.Types.ObjectId,
         ref: "User"
-    }
+    }]
     
 });
 
