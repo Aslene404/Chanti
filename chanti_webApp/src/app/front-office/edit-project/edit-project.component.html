@@ -1,20 +1,20 @@
-<div class="container w-screen h-screen ">
+<div class="w-full h-full">
   <mat-tab-group>
     <mat-tab label="Materials">
       <ng-template matTabContent>
-        <app-material-tab [materialList]="currentMaterials"></app-material-tab>
+        <app-material-tab [materialList]="currentProject?.materials" [projectId]="currentProjectId" (onMaterialListChanged)="refreshProject($event)"></app-material-tab>
       </ng-template>
     </mat-tab>
 
     <mat-tab label="Tasks">
       <ng-template matTabContent>
-        <app-tasks-tab [taskList]="currentTasks"></app-tasks-tab>
+        <app-tasks-tab [taskList]="currentProject?.tasks" [projectId]="currentProjectId" (onTaskListChanged)="refreshProject($event)"></app-tasks-tab>
       </ng-template>
     </mat-tab>
 
     <mat-tab label="Affected Staff">
       <ng-template matTabContent>
-        <app-staff-tab [staffList]="currentStaff" [allUsers]="users"></app-staff-tab>
+        <app-staff-tab [staffList]="currentProject?.staff" [allUsers]="users" [projectId]="currentProjectId" (onStaffListChanged)="refreshProject($event)"></app-staff-tab>
       </ng-template>
     </mat-tab>
 

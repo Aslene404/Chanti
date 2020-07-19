@@ -71,7 +71,27 @@ const getProjectById = Project => async (id) => {
         });
     }
     try {
-        let project = await Project.findById(id);
+        let project = await Project.findById(id).populate({
+                path: 'owner'
+            })
+            .populate({
+                path: 'tasks',
+                populate: {
+                    path: "tasks"
+                }
+            })
+            .populate({
+                path: 'materials',
+                populate: {
+                    path: "materials"
+                }
+            })
+            .populate({
+                path: 'staff',
+                populate: {
+                    path: "staff"
+                }
+            });
         if (project) {
             return ({
                 status: "success",
@@ -346,6 +366,31 @@ const assignStaffToProject = Project => User => async (projectId, userId) => {
     }
 }
 
+const updateProjectStaff = Project => async (projectId, stafIds) => {
+    try {
+        let res = await Project.findByIdAndUpdate(
+                {_id:projectId} , 
+                { "staff": stafIds},
+            function (err, model) {
+                console.log(err);
+            });
+            console.log(res);
+            return ({
+                status: "success",
+                message: `Staff assigned to Project`,
+                payload: res
+            })
+
+    } catch (error) {
+        return ({
+            status: "error",
+            message: `Error can't assign Staff to Project`,
+            payload: error
+        });
+
+    }
+}
+
 module.exports = (Project) => {
     return {
         addProject: addProject(Project),
@@ -357,6 +402,7 @@ module.exports = (Project) => {
         deleteProject: deleteProject(Project),
         assignStaffToProject: assignStaffToProject(Project),
         assignTaskToProject: assignTaskToProject(Project),
-        getUserProjects: getUserProjects(Project)
+        getUserProjects: getUserProjects(Project),
+        updateProjectStaff: updateProjectStaff(Project)
     }
 }

@@ -1,16 +1,34 @@
+const Project = require('../db/models/project-schema');
+const mongoose = require('mongoose');
 
-const addTask = Task => async (p) => {
+const addTask = Task => async (_projectId, _task) => {
 
-    const task = new Task(p)
+    const task = new Task(_task);
+    task.projectId = _projectId;
+
     try {
-        const save = await task.save();
-        if (save) {
-            return ({
-                status: "success",
-                message: "task added succssfully!!!",
-                payload: save
-            })
-        }
+        const saved = await task.save();
+        await Project.findByIdAndUpdate(_projectId, {
+                $push: {
+                    "tasks": saved._id
+                }
+            },
+            function (err, model) {
+                console.log(err);
+            }
+        );
+
+
+
+        return ({
+            status: "success",
+            message: "task added succssfully!!!",
+            payload: {
+                task: saved
+            }
+        })
+
+
     } catch (error) {
         return ({
             status: "failed",
@@ -73,7 +91,7 @@ const updateTask = Task => async (id, task) => {
     if (task === undefined || JSON.stringify(task) === "{}") {
         return ({
             status: "error",
-            message: "You should send taskname,fdate and sdate",
+            message: "You should send taskname,quantity and unitprice",
             payload: null
         })
     }
@@ -96,9 +114,9 @@ const updateTask = Task => async (id, task) => {
 
 }
 
-const updateTaskStatus = Task => async (id, fdate) => {
-    fdatees = Object.values(STATUSES);
-    const isStatusValid = fdatees.includes(fdate);
+const updateTaskStatus = Task => async (id, quantity) => {
+    quantityes = Object.values(STATUSES);
+    const isStatusValid = quantityes.includes(quantity);
 
     if (!isStatusValid) {
         return ({
@@ -106,13 +124,12 @@ const updateTaskStatus = Task => async (id, fdate) => {
             message: "wrong Status",
             payload: null
         });
-    }
-   else {
+    } else {
         try {
             let task = await Task.findById(id);
             if (task) {
                 task.set({
-                    fdate: fdate
+                    quantity: quantity
                 });
                 await task.save();
                 return ({
@@ -123,7 +140,7 @@ const updateTaskStatus = Task => async (id, fdate) => {
             } else {
                 return ({
                     status: "error",
-                    message: "task not found, update fdate is failed",
+                    message: "task not found, update quantity is failed",
                     payload: null
                 })
             }
@@ -131,7 +148,7 @@ const updateTaskStatus = Task => async (id, fdate) => {
         } catch (error) {
             return ({
                 status: "error",
-                message: "Update task fdate is failed",
+                message: "Update task quantity is failed",
                 payload: null
             })
         }
@@ -149,7 +166,9 @@ const deleteTask = Task => async (id) => {
         });
     }
     try {
-        let task = await Task.deleteOne({_id:id});
+        let task = await Task.deleteOne({
+            _id: id
+        });
         if (task) {
             return ({
                 status: "success",
@@ -168,14 +187,14 @@ const deleteTask = Task => async (id) => {
 
 
 
+
 module.exports = (Task) => {
     return {
         addTask: addTask(Task),
-        
         getAllTasks: getAllTasks(Task),
         getTaskById: getTaskById(Task),
         updateTask: updateTask(Task),
-        
+
         deleteTask: deleteTask(Task)
     }
 }

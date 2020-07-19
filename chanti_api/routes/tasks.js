@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Task = require('../db/models/task-schema');
 const helpers = require('../helpers/user-validation');
+const { check, validationResult } = require('express-validator');
 
 
 const taskService = require('../services/task-service')(Task);
@@ -10,20 +11,23 @@ const taskService = require('../services/task-service')(Task);
 
 // @ts-check
 // POST /addTask
-router.post('/addTask', async function (req, res, next) {
+router.post('/addtask/:projectId', async function (req, res, next) {
+    let projectId=req.params.projectId;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      res.fdate(422).json({
-        fdate: "fail",
+      res.status(422).json({
+        status: "fail",
         message: errors.array(),
         payload: null
       });
     } else {
       let {
         ...task
-      } = req.body
+      } = req.body;
+    
       try {
-        let response = await taskService.addTask(task);
+        let response = await taskService.addTask(projectId,task);
+        console.log(response);
         res.json(response);
       } catch (error) {
         next(error)
@@ -73,11 +77,11 @@ router.get('/task/:id', helpers.validateUser, async function (req, res,next) {
 router.put('/update/:id', helpers.validateUser, async function (req, res,next) {
   if (
     !req.body.hasOwnProperty('taskname') &&
-    !req.body.hasOwnProperty('sdate') &&
-    !req.body.hasOwnProperty('fdate')) {
-    res.fdate(422).json({
-      fdate: "error",
-      message: 'You Should send taskname and/or sdate and/or fdate',
+    !req.body.hasOwnProperty('quantity') &&
+    !req.body.hasOwnProperty('status')) {
+    res.status(422).json({
+      status: "error",
+      message: 'You Should send taskname and/or quantity and/or status',
       payload: null
     });
   } else {

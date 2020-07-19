@@ -1,6 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { IMaterial } from '../../../../shared/models/material.model';
+import { MaterialService } from '../../../material.service';
+import { IApiResponse } from '../../../../shared/models/api-response.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -9,11 +12,17 @@ import { IMaterial } from '../../../../shared/models/material.model';
   styleUrls: ['./material-tab.component.scss']
 })
 export class MaterialTabComponent implements OnInit {
- @Input('materialList') public materialList: IMaterial[];
- @Output('') public onMaterialListChanged: EventEmitter<any> = new EventEmitter();
+  @Input('materialList') public materialList: IMaterial[];
+  @Input('projectId') public projectId: string;
+  @Output() public onMaterialListChanged: EventEmitter<boolean> = new EventEmitter(false);
+
+  public subscription;
+
   materialForm: FormGroup;
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private materialService: MaterialService,
+    private snackBar: MatSnackBar,
   ) { }
 
   ngOnInit(): void {
@@ -25,7 +34,17 @@ export class MaterialTabComponent implements OnInit {
   }
 
   addMaterial() {
-    console.log(this.materialForm.value);
+    this.materialService.addNewMaterial(this.projectId, this.materialForm.value).subscribe(
+      {
+        next: (response: IApiResponse) => {
+          this.snackBar.open(response.message, '', { duration: 5000 });
+        },
+        error: error => {
+          this.snackBar.open(error.message, 'Close')
+        },
+        complete: () =>{ this.onMaterialListChanged.emit(true);}
+
+      });
   }
 
   tabLoadTimes: Date[] = [];

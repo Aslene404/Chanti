@@ -44,23 +44,32 @@ Loaded: {{getTimeLoaded(3) | date:'medium'}}
                   class="block w-full py-2 pl-8 pr-6 text-sm text-gray-700 placeholder-gray-400 bg-white border border-b border-gray-400 rounded-l rounded-r appearance-none sm:rounded-l-none focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none" />
               </div>
             </div>
+
+
+            <form [formGroup]="staffForm">
             <mat-form-field>
               <mat-label>Select Staff </mat-label>
-              <mat-select [formControl]="staffControlForm" multiple>
+              <mat-select formControlName="id" multiple>
                 <mat-select-trigger>
-                  {{staffControlForm.value ? staff.value[0] : ''}}
-                  <span *ngIf="staffControlForm.value?.length > 1" class="example-additional-selection">
-                    (+{{staffControlForm.value.length - 1}}
-                    {{staffControlForm.value?.length === 2 ? 'other' : 'others'}})
+                  {{staffForm.value ? staffForm.value[0] : ''}}
+                  <span *ngIf="staffForm.value?.length > 1" class="example-additional-selection">
+                    (+{{staffForm.value.length - 1}}
+                    {{staffForm.value?.length === 2 ? 'other' : 'others'}})
                   </span>
                 </mat-select-trigger>
-                <mat-option *ngFor="let user of staff" [value]="user">{{user}}
+                <mat-option *ngFor="let user of allUsers" [value]="user.id">{{user.username}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
-            <a class="text-blue-700" mat-button>
+          </form>
+
+
+
+            <button class="text-blue-700" mat-button (click)="updateProjectStaff()">
               <mat-icon>add_circle</mat-icon>Add Staff To This Project
-            </a>
+            </button>
+
+
             <div class="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
               <div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
                 <table class="min-w-full leading-normal">
@@ -88,51 +97,37 @@ Loaded: {{getTimeLoaded(3) | date:'medium'}}
                         class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase bg-gray-100 border-b-2 border-gray-200">
                         Phone
                       </th>
-
+                        <th class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase bg-gray-100 border-b-2 border-gray-200">
+                        Actions
+                      </th>
 
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr *ngFor="let _user of staffList">
                       <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                         <div class="flex items-center">
 
                           <div class="ml-3">
 
                             <p class="text-gray-900 whitespace-no-wrap">
-                              <span class="dotg"></span> Mouhamed JBELI
+                              <span class="dotg"></span> {{_user?.fullusername}}
                             </p>
                           </div>
                         </div>
                       </td>
                       <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-
-
-
-                        35
-
+                        {{_user?.age}}
                       </td>
                       <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-
-
-
-                        Architect
-
+                        {{_user?.role}}
                       </td>
 
                       <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-
-
-
-                        med@yahoo.fr
-
+                        {{_user?.email}}
                       </td>
                       <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-
-
-
-                        22569987
-
+                        {{_user?.phone}}
                       </td>
                       <td class="px-5 py-5 text-sm text-green-600 bg-white border-b border-gray-200">
                         <a mat-button>
@@ -150,73 +145,10 @@ Loaded: {{getTimeLoaded(3) | date:'medium'}}
                             <mat-icon>add_circle</mat-icon>Affect task
                           </button>
                         </mat-menu>
-
                       </td>
-
-
                     </tr>
 
-                    <tr>
-                      <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                        <div class="flex items-center">
 
-                          <div class="ml-3">
-
-                            <p class="text-gray-900 whitespace-no-wrap">
-                              <span class="dotb"></span> Ahmed NACEUR
-                            </p>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-
-
-
-                        28
-
-                      </td>
-                      <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-
-
-
-                        Construction Worker
-
-                      </td>
-
-                      <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-
-
-
-                        ahmed@gmail.com
-
-                      </td>
-                      <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-
-
-
-                        22569987
-
-                      </td>
-                      <td class="px-5 py-5 text-sm text-green-600 bg-white border-b border-gray-200">
-                        <a mat-button>
-                          <mat-icon> call</mat-icon>
-                        </a>
-                      </td>
-                      <td class="px-5 py-5 text-sm text-gray-600 bg-white border-b border-gray-200">
-                        <a mat-button [matMenuTriggerFor]="tasks2">
-                          <mat-icon> list_alt</mat-icon> Show affected tasks
-                        </a>
-                        <mat-menu #tasks2="matMenu">
-                          <button mat-menu-item>Preparing construction site</button>
-                          <button mat-menu-item>Assisting contractors</button>
-                          <button mat-menu-item>
-                            <mat-icon>add_circle</mat-icon>Affect task
-                          </button>
-                        </mat-menu>
-                      </td>
-
-
-                    </tr>
                   </tbody>
                 </table>
                 <div class="flex flex-col items-center px-5 py-5 bg-white border-t xs:flex-row xs:justify-between ">

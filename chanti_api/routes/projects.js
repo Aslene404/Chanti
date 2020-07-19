@@ -136,5 +136,19 @@ router.delete('/delete/:id', async function (req, res, next) {
   }
 });
 
+router.post('/staffupdate/:projectId',async function (req, res, next) {
+  let ids = req.body.ids;
+  let projectId=req.params.projectId;
+ // console.log(ids,projectId)
+  try {
+    let response = await projectService.updateProjectStaff(projectId,ids);
+    if(response){
+      res.json(response);
+    }
+  } catch (error) {
+    next(error);
+  }
+})
+
 
 module.exports = router;
