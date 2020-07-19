@@ -23,6 +23,7 @@ import { FrontSingupComponent } from '../shared/user/front-singup/front-singup.c
 import { UserLogoutComponent } from '../shared/user/user-logout/user-logout.component';
 import { UserService } from '../shared/user/user.service';
 import { SigninComponent } from '../shared/user/signin/front-singin.component';
+import { StaffCallComponent } from './staff-call/staff-call.component';
 
 
 
@@ -39,7 +40,8 @@ import { SigninComponent } from '../shared/user/signin/front-singin.component';
     FrontProjectsComponent,
     FrontStaffComponent,
     EditProjectComponent,
-    UserLogoutComponent],
+    UserLogoutComponent,
+    StaffCallComponent],
   imports: [
     CommonModule,
     FrontOfficeRoutingModule,
