@@ -24,6 +24,9 @@ import { UserLogoutComponent } from '../shared/user/user-logout/user-logout.comp
 import { UserService } from '../shared/user/user.service';
 import { SigninComponent } from '../shared/user/signin/front-singin.component';
 import { StaffCallComponent } from './staff-call/staff-call.component';
+import { MaterialTabComponent } from './edit-project/material/material-tab/material-tab.component';
+import { StaffTabComponent } from './edit-project/staff/staff-tab/staff-tab.component';
+import { TasksTabComponent } from './edit-project/tasks/tasks-tab/tasks-tab.component';
 
 
 
@@ -41,7 +44,10 @@ import { StaffCallComponent } from './staff-call/staff-call.component';
     FrontStaffComponent,
     EditProjectComponent,
     UserLogoutComponent,
-    StaffCallComponent],
+    StaffCallComponent,
+    MaterialTabComponent,
+    StaffTabComponent,
+    TasksTabComponent],
   imports: [
     CommonModule,
     FrontOfficeRoutingModule,
@@ -52,11 +58,13 @@ import { StaffCallComponent } from './staff-call/staff-call.component';
     ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule
-    
+
   ],
-  exports:[PageFooterComponent,ClientNavbarComponent],
+  exports:[PageFooterComponent,ClientNavbarComponent, MaterialTabComponent,
+    StaffTabComponent,
+    TasksTabComponent],
   providers:[UserService]
-  
-  
+
+
 })
 export class FrontOfficeModule { }

@@ -1,23 +1,23 @@
-<div class="h-screen overflow-hidden flex items-center justify-center" style="background: #edf2f7;">
+<div class="flex items-center justify-center h-screen overflow-hidden" style="background: #edf2f7;">
 
-    <div class="antialiased font-sans bg-gray-200">
-        <div class="container mx-auto px-4 sm:px-8">
+    <div class="font-sans antialiased bg-gray-200">
+        <div class="container px-4 mx-auto sm:px-8">
             <div class="py-8">
                 <div>
                     <h2 class="text-2xl font-semibold leading-tight">My Projects</h2>
                 </div>
-                <div class="my-2 flex sm:flex-row flex-col">
+                <div class="flex flex-col my-2 sm:flex-row">
                     <div class="flex flex-row mb-1 sm:mb-0">
                         <div class="relative">
                             <select
-                                class="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                                class="block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border border-gray-400 rounded-l appearance-none focus:outline-none focus:bg-white focus:border-gray-500">
                                 <option>5</option>
                                 <option>10</option>
                                 <option>20</option>
                             </select>
                             <div
-                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
+                                <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 20 20">
                                     <path
                                         d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
@@ -26,14 +26,14 @@
                         </div>
                         <div class="relative">
                             <select
-                                class="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
+                                class="block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border-t border-b border-r border-gray-400 rounded-r appearance-none sm:rounded-r-none sm:border-r-0 focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
                                 <option>All</option>
                                 <option>In Progress</option>
                                 <option>Completed</option>
                             </select>
                             <div
-                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
+                                <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 20 20">
                                     <path
                                         d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
@@ -41,19 +41,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="block relative">
-                        <span class="h-full absolute inset-y-0 left-0 flex items-center pl-2">
-                            <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current text-gray-500">
+                    <div class="relative block">
+                        <span class="absolute inset-y-0 left-0 flex items-center h-full pl-2">
+                            <svg viewBox="0 0 24 24" class="w-4 h-4 text-gray-500 fill-current">
                                 <path
                                     d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z">
                                 </path>
                             </svg>
                         </span>
                         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search"
-                            class="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none" />
+                            class="block w-full py-2 pl-8 pr-6 text-sm text-gray-700 placeholder-gray-400 bg-white border border-b border-gray-400 rounded-l rounded-r appearance-none sm:rounded-l-none focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none" />
 
                     </div>
-                    <div class="block relative">
+                    <div class="relative block">
 
                     </div>
 
@@ -80,16 +80,16 @@
                 </form>
 
                 <!-- Projects List -->
-                <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-                    <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+                <div class="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
+                    <div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
                         <table mat-table [dataSource]="dataSource" matSort class="min-w-full leading-normal">
                             <ng-container matColumnDef="projectname">
                                 <th mat-header-cell *matHeaderCellDef mat-sort-header
-                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase bg-gray-100 border-b-2 border-gray-200">
                                     Project Name
                                 </th>
                                 <td mat-cell *matCellDef="let element"
-                                    class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                     <div class="flex items-center">
 
                                         <div class="ml-3">
@@ -102,16 +102,16 @@
                             </ng-container>
                             <ng-container matColumnDef="status">
                                 <th mat-header-cell *matHeaderCellDef mat-sort-header
-                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase bg-gray-100 border-b-2 border-gray-200">
                                     Status
                                 </th>
                                 <td mat-cell *matCellDef="let element">
                                     <div *ngIf="element.status ==='done'"
-                                        class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                         <span
-                                            class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                                            class="relative inline-block px-3 py-1 font-semibold leading-tight text-green-900">
                                             <span aria-hidden
-                                                class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
+                                                class="absolute inset-0 bg-green-200 rounded-full opacity-50"></span>
                                             <span class="relative">
                                                 <mat-icon>done</mat-icon>Done
                                             </span>
@@ -121,11 +121,11 @@
                                 <td mat-cell *matCellDef="let element">
 
                                     <div *ngIf="element.status==='in progress'"
-                                        class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                         <span
-                                            class="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
+                                            class="relative inline-block px-3 py-1 font-semibold leading-tight text-yellow-900">
                                             <span aria-hidden
-                                                class="absolute inset-0 bg-yellow-200 opacity-50 rounded-full"></span>
+                                                class="absolute inset-0 bg-yellow-200 rounded-full opacity-50"></span>
                                             <span class="relative">
                                                 <mat-icon>timelapse</mat-icon>In Progress
                                             </span>
@@ -150,7 +150,7 @@
                             <ng-container matColumnDef="delete">
                                 <th mat-header-cell *matHeaderCellDef> Delete </th>
                                 <td mat-cell *matCellDef="let element">
-
+<!-- TODO: fix delete project-->
                                     <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" color="warn"
                                         (click)="deleteProject(element._id)">
                                         <mat-icon aria-label="Delete">delete</mat-icon>

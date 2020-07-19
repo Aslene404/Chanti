@@ -1,2 +1,3 @@
 data/
-node_modules
+node_modules/
+chanti_api/node_modules/**

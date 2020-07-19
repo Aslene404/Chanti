@@ -7,68 +7,47 @@ import { IProject } from 'src/app/shared/models/project.model';
 import { UserService } from 'src/app/shared/user/user.service';
 import { map } from 'rxjs/operators';
 import { IUser } from 'src/app/shared/user/user.model';
+import { ITask } from '../../shared/models/task.model';
+import { IMaterial } from '../../shared/models/material.model';
 @Component({
   selector: 'app-edit-project',
   templateUrl: './edit-project.component.html',
   styleUrls: ['./edit-project.component.scss']
 })
 export class EditProjectComponent implements OnInit {
-
-  tabLoadTimes: Date[] = [];
-
-  getTimeLoaded(index: number) {
-    if (!this.tabLoadTimes[index]) {
-      this.tabLoadTimes[index] = new Date();
-    }
-
-    return this.tabLoadTimes[index];
-  }
-
-  staffForm = new FormControl();
-  staff: any;
-
   currentProjectId: string;
   currentProject: IProject;
-
-  taskForm: FormGroup;
-  materialForm: FormGroup;
-
+  currentTasks:ITask[];
+  currentMaterials:IMaterial[];
+  currentStaff:IUser[];
+  users:IUser[];
   constructor(
     private projectService: ProjectsService,
     private activatedRoute: ActivatedRoute,
-    private userService: UserService,
-    private fb: FormBuilder) { }
+    private userService: UserService
+   ) { }
 
   ngOnInit(): void {
+   this.refreshProject();
+  }
+
+  refreshProject(){
     this.currentProjectId = this.activatedRoute.snapshot.paramMap.get('id');
-    this.projectService.getProjectById(this.currentProjectId).subscribe(data => this.currentProject = data.payload);
-   
+    this.projectService.getProjectById(this.currentProjectId).subscribe(data => {
+      this.currentProject = data.payload;
+      this.currentProject.tasks ? this.currentTasks=this.currentProject.tasks : null;
+      this.currentProject.materials ? this.currentMaterials=this.currentProject.materials : null;
+      this.currentProject.staff ? this.currentStaff = this.currentProject.staff:null;
+    });
+
     this.userService.getAllUsers()
     .pipe(
       map (response=>response.payload))
       .subscribe(data => {
-        this.staff = data.map((user:IUser)=>user.fullusername);
-        console.log(this.staff);
+        this.users = data.map((user:IUser)=>user.fullusername);
       });
-    this.taskForm = this.fb.group({
-      taskname: [''],
-      sdate: [''],
-      fdate: ['']
-    });
-
-    this.materialForm = this.fb.group({
-      materialname: [''],
-      quantity: [0],
-      unitprice: [0]
-    });
-
-  
-
   }
 
-  addMaterial(){
-    console.log(this.materialForm.value);
-  }
 
 
 }
