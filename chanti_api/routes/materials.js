@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Material = require('../db/models/material-schema');
 const helpers = require('../helpers/user-validation');
+const { check, validationResult } = require('express-validator');
 
 
 const materialService = require('../services/material-service')(Material);
@@ -10,7 +11,8 @@ const materialService = require('../services/material-service')(Material);
 
 // @ts-check
 // POST /addMaterial
-router.post('/addMaterial', async function (req, res, next) {
+router.post('/addmaterial/:projectId', async function (req, res, next) {
+    let projectId=req.params.projectId;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       res.status(422).json({
@@ -21,9 +23,11 @@ router.post('/addMaterial', async function (req, res, next) {
     } else {
       let {
         ...material
-      } = req.body
+      } = req.body;
+    
       try {
-        let response = await materialService.addMaterial(material);
+        let response = await materialService.addMaterial(projectId,material);
+        console.log(response);
         res.json(response);
       } catch (error) {
         next(error)

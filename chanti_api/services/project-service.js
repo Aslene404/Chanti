@@ -1,4 +1,3 @@
-
 const addProject = Project => async (p) => {
 
     const project = new Project(p)
@@ -22,10 +21,31 @@ const addProject = Project => async (p) => {
 }
 
 
+//TODO: to fix getAllProject Service and route
 
 const getAllProjects = Project => async () => {
     try {
-        let projects = await Project.find({}).populate('task');
+        let projects = await Project.find().populate({
+                path: 'owner'
+            })
+            .populate({
+                path: 'tasks',
+                populate: {
+                    path: "tasks"
+                }
+            })
+            .populate({
+                path: 'materials',
+                populate: {
+                    path: "materials"
+                }
+            })
+            .populate({
+                path: 'staff',
+                populate: {
+                    path: "staff"
+                }
+            });
         if (project) {
             return ({
                 status: "success",
@@ -69,7 +89,7 @@ const getProjectById = Project => async (id) => {
 }
 
 
-const getUserProjects = Project => async (userId)=>{
+const getUserProjects = Project => async (userId) => {
     if (userId === undefined) {
         return ({
             status: "error",
@@ -78,11 +98,30 @@ const getUserProjects = Project => async (userId)=>{
         });
     }
     try {
-        let projects = await Project.find({owner:userId})
-                                   .populate({path:'owner'})
-                                   .populate({path:'tasks',populate:{path:"tasks"}} )
-                                   .populate({path:'materials',populate:{path:"materials"}})
-                                   .populate({path:'staff',populate:{path:"staff"}});
+        let projects = await Project.find({
+                owner: userId
+            })
+            .populate({
+                path: 'owner'
+            })
+            .populate({
+                path: 'tasks',
+                populate: {
+                    path: "tasks"
+                }
+            })
+            .populate({
+                path: 'materials',
+                populate: {
+                    path: "materials"
+                }
+            })
+            .populate({
+                path: 'staff',
+                populate: {
+                    path: "staff"
+                }
+            });
         if (projects) {
             return ({
                 status: "success",
@@ -136,8 +175,7 @@ const updateProjectStatus = Project => async (id, status) => {
             message: "wrong Status",
             payload: null
         });
-    }
-   else {
+    } else {
         try {
             let project = await Project.findById(id);
             if (project) {
@@ -179,7 +217,9 @@ const deleteProject = Project => async (id) => {
         });
     }
     try {
-        let project = await Project.deleteOne({_id:id});
+        let project = await Project.deleteOne({
+            _id: id
+        });
         if (project) {
             return ({
                 status: "success",
@@ -198,7 +238,7 @@ const deleteProject = Project => async (id) => {
 
 
 const assignTaskToProject = Project => Task => async (projectId, taskId) => {
-    if(projectId === undefined || taskId ===undefined){
+    if (projectId === undefined || taskId === undefined) {
         return ({
             status: "error",
             message: `Can't assign task to project`,
@@ -207,34 +247,34 @@ const assignTaskToProject = Project => Task => async (projectId, taskId) => {
     }
 
     try {
-        let project=await Project.findById(projectId);
-        project.task=taskId;
+        let project = await Project.findById(projectId);
+        project.task = taskId;
         await project.save();
 
-        let task=await Task.findById(taskId);
+        let task = await Task.findById(taskId);
         task.project.push(projectId);
         await task.save();
-        return({
+        return ({
             status: "success",
             message: `Task assigned to Project`,
             payload: {
-                project:project,
-                task:task
+                project: project,
+                task: task
             }
         })
 
-        
+
     } catch (error) {
         return ({
             status: "error",
             message: `Error can't assign Task to Project`,
             payload: error
         });
-        
+
     }
 }
 const assignMaterialToProject = Project => Material => async (projectId, materialId) => {
-    if(projectId === undefined || materialId ===undefined){
+    if (projectId === undefined || materialId === undefined) {
         return ({
             status: "error",
             message: `Can't assign material to project`,
@@ -243,34 +283,34 @@ const assignMaterialToProject = Project => Material => async (projectId, materia
     }
 
     try {
-        let project=await Project.findById(projectId);
-        project.material=materialId;
+        let project = await Project.findById(projectId);
+        project.material = materialId;
         await project.save();
 
-        let material=await Material.findById(materialId);
+        let material = await Material.findById(materialId);
         material.project.push(projectId);
         await material.save();
-        return({
+        return ({
             status: "success",
             message: `Material assigned to Project`,
             payload: {
-                project:project,
-                material:material
+                project: project,
+                material: material
             }
         })
 
-        
+
     } catch (error) {
         return ({
             status: "error",
             message: `Error can't assign Material to Project`,
             payload: error
         });
-        
+
     }
 }
 const assignStaffToProject = Project => User => async (projectId, userId) => {
-    if(projectId === undefined || userId ===undefined){
+    if (projectId === undefined || userId === undefined) {
         return ({
             status: "error",
             message: `Can't assign staff to project`,
@@ -279,44 +319,44 @@ const assignStaffToProject = Project => User => async (projectId, userId) => {
     }
 
     try {
-        let project=await Project.findById(projectId);
-        project.staff=userId;
+        let project = await Project.findById(projectId);
+        project.staff = userId;
         await project.save();
 
-        let user=await User.findById(userId);
+        let user = await User.findById(userId);
         user.project.push(projectId);
         await user.save();
-        return({
+        return ({
             status: "success",
             message: `Staff assigned to Project`,
             payload: {
-                project:project,
-                user:user
+                project: project,
+                user: user
             }
         })
 
-        
+
     } catch (error) {
         return ({
             status: "error",
             message: `Error can't assign Staff to Project`,
             payload: error
         });
-        
+
     }
 }
 
 module.exports = (Project) => {
     return {
         addProject: addProject(Project),
-        
+
         getAllProjects: getAllProjects(Project),
         getProjectById: getProjectById(Project),
         updateProject: updateProject(Project),
-        updateProjectStatus:updateProjectStatus(Project),
+        updateProjectStatus: updateProjectStatus(Project),
         deleteProject: deleteProject(Project),
         assignStaffToProject: assignStaffToProject(Project),
         assignTaskToProject: assignTaskToProject(Project),
-        getUserProjects:getUserProjects(Project)
+        getUserProjects: getUserProjects(Project)
     }
 }
