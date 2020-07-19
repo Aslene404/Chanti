@@ -12,6 +12,7 @@ import {EditProjectComponent} from './edit-project/edit-project.component'
 import { FrontSingupComponent } from '../shared/user/front-singup/front-singup.component';
 import { SigninComponent } from '../shared/user/signin/front-singin.component';
 import { AuthGuard } from '../_gards/auth.guard';
+import { StaffCallComponent } from './staff-call/staff-call.component';
 
 
 const routes: Routes = [
@@ -53,6 +54,11 @@ const routes: Routes = [
       {
         path: 'staff',
         component: FrontStaffComponent
+        //canActivate:[AuthGuard]
+      },
+      {
+        path: 'staff/call',
+        component: StaffCallComponent
         //canActivate:[AuthGuard]
       },
       
