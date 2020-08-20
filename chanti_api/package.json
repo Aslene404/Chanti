@@ -16,7 +16,7 @@
     "nyc": "cross-env NODE_ENV=test nyc node_modules/mocha/bin/mocha --timeout 900000 test/**/*.spec.js --exit"
   },
   "dependencies": {
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
     "cross-env": "^6.0.3",
     "debug": "~2.6.9",
